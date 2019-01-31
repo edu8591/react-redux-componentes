@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import faker from 'faker';
 import CommentDetail from './CommentDetail';
-import Approval from './ApprovalCard';
+import ApprovalCard from './ApprovalCard';
 
 const App = () => {
     const image = faker.image.avatar;
     
     return (
+        
         <div className="ui container comments">
+            <ApprovalCard>
+                <h4>Warning!</h4>
+                Are you sure you want to do this
+            </ApprovalCard>
+        
             {/* <div className="comment">
                 <a href="/" className="avatar">
                     <img alt="avatar" src={faker.image.avatar()} />
@@ -30,28 +36,32 @@ const App = () => {
             </div> 
             
             *this is too long so we should call the component CommentDetail instead*/}
-            <Approval />
-            <CommentDetail 
-                author="Sam" 
-                timeAgo="Today at 4:45PM" 
-                blogPost="end of passion play" 
-                authorAvatar= {image()} 
-            />{/*components are called within <> in JSX, 'as it is not JS we do not call within curly braces{}' */}
-            
-            <CommentDetail 
-                author="Alex" 
-                timeAgo="Today at 3:20PM" 
-                blogPost="crumbling away" 
-                authorAvatar= {image()}  
-            />
-            
-            <CommentDetail 
-                author="Jane" 
-                timeAgo="Yesterday at 5:30PM" 
-                blogPost="I'm your source of self-destruction" 
-                authorAvatar= {image()}  
-            /> {/*each of these <CommentDetail /> creates a comment */}
-       
+            <ApprovalCard>
+                <CommentDetail 
+                    author="Sam" 
+                    timeAgo="Today at 4:45PM" 
+                    blogPost="end of passion play" 
+                    authorAvatar= {image()} 
+                />{/*components are called within <> in JSX, 'as it is not JS we do not call within curly braces{}' */}
+            </ApprovalCard>
+
+            <ApprovalCard>       
+                <CommentDetail 
+                    author="Alex" 
+                    timeAgo="Today at 3:20PM" 
+                    blogPost="crumbling away" 
+                    authorAvatar= {image()}  
+                />
+            </ApprovalCard>
+
+            <ApprovalCard>
+                <CommentDetail 
+                    author="Jane" 
+                    timeAgo="Yesterday at 5:30PM" 
+                    blogPost="I'm your source of self-destruction" 
+                    authorAvatar= {image()}  
+                /> {/*each of these <CommentDetail /> creates a comment */}
+            </ApprovalCard>
         </div>
     );
 };
